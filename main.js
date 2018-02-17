@@ -2,6 +2,8 @@ import style from './main.css'
 import * as constants from './utils/constants.js'
 import {Title} from './components/Title.js'
 import {Results} from "./components/Results.js";
+import {render} from './utils/helpers.js'
+import {configs} from './utils/configs.js'
 
 var app = {
     appName : 'Welcome to Camel Calculator',
@@ -19,14 +21,12 @@ var app = {
     },
     setAge: function (age) {
         this.state.age = age
-        console.log("new AGE:"+ age)
     },
     setHeight: function (cm) {
         this.state.height = cm
-        console.log("new Height:"+ cm)
     }
 }
 var appContainer = document.getElementById("app-container")
 
-appContainer.appendChild(Title(app.appName))
-appContainer.appendChild(Results(app.getState()))
+render(appContainer, configs.ids().title(), Title(app.appName))
+render(appContainer, configs.ids().results(), Results(app.getState()))
