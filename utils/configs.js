@@ -3,7 +3,8 @@ export const configs = {
         return {
             title : "__TITLE",
             results : "__RESULTS",
-            sliderAge: "__SLIDER_AGE"
+            sliderAge: "__SLIDER_AGE",
+            sliderHeight: "__SLIDER_HEIGHT"
         }
     }
 }

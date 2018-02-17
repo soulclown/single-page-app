@@ -11,8 +11,8 @@ import {Slider} from './components/Slider/Slider.js'
 var app = {
     appName : 'Welcome to Camel Calculator',
     state : new Object({
-        age:undefined,
-        height: undefined,
+        age:22,
+        height: 176,
         hairColor: constants.hairColors.BLOND,
         hairLength: constants.hairLengths.MIDDLE,
         eyeColor:constants.eyeColors.BLUE,
@@ -39,4 +39,24 @@ const handleSlideAge = function (e) {
     app.setAge(e.target.value)
     update(configs.ids().results,Results(app.getState()))
 }
-render(appContainer, configs.ids().sliderAge, Slider(constants.ageRange, handleSlideAge))
+const handleSlideHeight = function (e) {
+    app.setHeight(e.target.value)
+    update(configs.ids().results,Results(app.getState()))
+}
+
+render(appContainer,
+    configs.ids().sliderAge,
+    Slider(
+        constants.ageRange,
+        app.getState().age,
+        handleSlideAge
+    )
+)
+render(appContainer,
+    configs.ids().sliderHeight,
+    Slider(
+        constants.heightRange,
+        app.getState().height,
+        handleSlideHeight
+    )
+)
