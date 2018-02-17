@@ -1,8 +1,31 @@
 import style from './main.css'
+import * as constants from './utils/constants.js'
 import {Title} from './components/Title.js'
 
-const appName = 'Welcome to Camel Calculator'
 
+var app = {
+    appName : 'Welcome to Camel Calculator',
+    state : new Object({
+        age:undefined,
+        height: undefined,
+        hairColor: constants.hairColors.BLOND,
+        hairLength: constants.hairLengths.MIDDLE,
+        eyeColor:constants.eyeColors.BLUE,
+        beard: constants.beardStyle.NONE,
+        body: constants.bodyShape.NORMAL
+    }),
+    getState: function () {
+        return this.state
+    },
+    setAge: function (age) {
+        this.state.age = age
+        console.log("new AGE:"+ age)
+    },
+    setHeight: function (cm) {
+        this.state.height = cm
+        console.log("new Height:"+ cm)
+    }
+}
 var appContainer = document.getElementById("app-container")
 
-appContainer.appendChild(Title(appName))
+appContainer.appendChild(Title(app.appName))
