@@ -9,7 +9,8 @@ export const configs = {
             radioHairLength: "__RADIO_HAIR_LENGTH",
             radioEyeColor: "__RADIO_EYE_COLOR",
             radioBeard: "__RADIO_BEARD",
-            radioBody: "__RADIO_BODY"
+            radioBody: "__RADIO_BODY",
+            character: "__CHARACTER"
         }
     }
 }

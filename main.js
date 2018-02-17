@@ -9,6 +9,7 @@ import {Button} from "./components/Button.js"
 import {Slider} from './components/Slider/Slider.js'
 import {Select} from './components/Select/Select.js'
 import {Radio} from './components/Radio/Radio.js'
+import {Character} from './components/Character/Character.js'
 
 var app = {
     appName : 'Welcome to Camel Calculator',
@@ -79,6 +80,8 @@ const handleSelectBeard = function (style) {
 const handleSelectBody = function (shape) {
     app.setBody(shape)
     update(configs.ids().results,Results(app.getState()))
+    update(configs.ids().character,Character(app.getState().body))
+
 }
 
 render(appContainer, configs.ids().sliderAge,
@@ -102,3 +105,6 @@ render(appContainer, configs.ids().radioBeard,
 render(appContainer, configs.ids().radioBody,
     Radio( Object.keys(constants.bodyShapes), app.getState().body, handleSelectBody )
 )
+
+
+render(appContainer, configs.ids().character, Character(app.getState().body))
