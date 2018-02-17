@@ -30,15 +30,15 @@ var app = {
 }
 var appContainer = document.getElementById("app-container")
 
-render(appContainer, configs.ids().title(), Title(app.appName))
-render(appContainer, configs.ids().results(), Results(app.getState()))
+render(appContainer, configs.ids().title, Title(app.appName))
+render(appContainer, configs.ids().results, Results(app.getState()))
 
 
 /* Test DOM update on user interaction */
 const handleOnClick = function () {
     app.setAge(Math.floor(Math.random() * 10))
     update(
-        configs.ids().results(),
+        configs.ids().results,
         Results(app.getState())
     )
 }

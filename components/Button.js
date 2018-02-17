@@ -1,4 +1,4 @@
-export const Button = function (label, callback) {
+export const Button = (label, callback) => {
     var b = document.createElement("button")
     b.innerText = label
     b.value=label;
