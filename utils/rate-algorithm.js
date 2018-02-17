@@ -1,12 +1,14 @@
 import * as constants from './constants.js'
 
 export const rateCalculator = ({age, height, body, beard, eyeColor, hairLength }) => {
-    return (ageRate(age)
+    let rate = (ageRate(age)
         + heightRate(height)
         + bodyShapeRate(body)
         + beardStyleRate(beard)
         + eyeColorsRate(eyeColor)
         + hairLengthRate(hairLength)) / 6
+    if (boosterPavarotti({body, beard, eyeColor, hairLength }))   rate*=1.2   // +20%
+    return rate
 }
 
 const bodyShapeRate = (bodyShape) => {
@@ -47,4 +49,13 @@ const ageRate = (age)=> {
 const heightRate = (height)=> {
     // Shorter is, more vote will get.
     return 1 - (height / constants.heightRange[1])
+}
+
+const boosterPavarotti = ({body, beard, eyeColor, hairLength }) => {
+    // Short Hair, long beard, brown eyes and he dress a smoking
+    return (hairLength==constants.hairLengths.SHORT
+        && beard==constants.beardStyles.LARGE
+        && eyeColor==constants.eyeColors.BROWN
+        && body == constants.bodyShapes.NORMAL
+    )
 }
