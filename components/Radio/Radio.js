@@ -1,11 +1,13 @@
 import styles from './Radio.css'
-export const Radio = (groupName, options, optionSelected, callback) => {
+import {guid} from '../../utils/helpers'
+export const Radio = (options, optionSelected, callback) => {
+    var uuid = guid()
     var node = document.createElement("div");
     options.forEach(function (option) {
         var isSelected = option == optionSelected
         var radioOption = document.createElement("input");
         radioOption.setAttribute('type', "radio")
-        radioOption.setAttribute('name', groupName)
+        radioOption.setAttribute('name', uuid)
         radioOption.setAttribute('value', option)
         if (isSelected)
             radioOption.setAttribute('checked', true)

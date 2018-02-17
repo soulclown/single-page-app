@@ -68,6 +68,10 @@ const handleSelectHairLength = function (length) {
     app.setHairLength(length)
     update(configs.ids().results,Results(app.getState()))
 }
+const handleSelectEyeColor = function (color) {
+    app.setEyeColor(color)
+    update(configs.ids().results,Results(app.getState()))
+}
 
 render(appContainer, configs.ids().sliderAge,
     Slider( constants.ageRange, app.getState().age, handleSlideAge )
@@ -79,5 +83,8 @@ render(appContainer, configs.ids().selectHairColor,
     Select( Object.keys(constants.hairColors), app.getState().hairColor, handleSelectHairColor )
 )
 render(appContainer, configs.ids().radioHairLength,
-    Radio( "group_name", Object.keys(constants.hairLengths), app.getState().hairLength, handleSelectHairLength )
+    Radio( Object.keys(constants.hairLengths), app.getState().hairLength, handleSelectHairLength )
+)
+render(appContainer, configs.ids().radioEyeColor,
+    Radio( Object.keys(constants.eyeColors), app.getState().eyeColor, handleSelectEyeColor )
 )
