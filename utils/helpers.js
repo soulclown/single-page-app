@@ -6,7 +6,7 @@ export const render = (parent, childId, child) => {
 }
 
 export const update = (elementId, element) => {
-    var item = document.getElementById(elementId).childNodes[0]
+    var item = document.getElementById(elementId)
     item.replaceChild(element, item.childNodes[0])
 }
 
