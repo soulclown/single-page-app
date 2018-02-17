@@ -72,6 +72,14 @@ const handleSelectEyeColor = function (color) {
     app.setEyeColor(color)
     update(configs.ids().results,Results(app.getState()))
 }
+const handleSelectBeard = function (style) {
+    app.setBeard(style)
+    update(configs.ids().results,Results(app.getState()))
+}
+const handleSelectBody = function (shape) {
+    app.setBody(shape)
+    update(configs.ids().results,Results(app.getState()))
+}
 
 render(appContainer, configs.ids().sliderAge,
     Slider( constants.ageRange, app.getState().age, handleSlideAge )
@@ -87,4 +95,10 @@ render(appContainer, configs.ids().radioHairLength,
 )
 render(appContainer, configs.ids().radioEyeColor,
     Radio( Object.keys(constants.eyeColors), app.getState().eyeColor, handleSelectEyeColor )
+)
+render(appContainer, configs.ids().radioBeard,
+    Radio( Object.keys(constants.beardStyles), app.getState().beard, handleSelectBeard )
+)
+render(appContainer, configs.ids().radioBody,
+    Radio( Object.keys(constants.bodyShapes), app.getState().body, handleSelectBody )
 )
