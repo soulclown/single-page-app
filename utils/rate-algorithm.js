@@ -1,16 +1,19 @@
 import * as constants from './constants.js'
 
 export const rateCalculator = ({age, height, body, beard, eyeColor, hairLength }) => {
-    let rate = (ageRate(age)
-        + heightRate(height)
-        + bodyShapeRate(body)
-        + beardStyleRate(beard)
-        + eyeColorsRate(eyeColor)
-        + hairLengthRate(hairLength)) / 6
+    let ratesArray = [
+        ageRate(age),
+        heightRate(height),
+        bodyShapeRate(body),
+        beardStyleRate(beard),
+        eyeColorsRate(eyeColor),
+        hairLengthRate(hairLength)
+    ]
+    let rate = ratesArray.reduce((a,b)=>a+b) / ratesArray.length
     if (boosterPavarotti({body, beard, eyeColor, hairLength }))     rate*=1.1   // +10%
     if (boosterSympathy({body, beard, hairLength }))                rate*=1.2   // +20%
     if (boosterMachoMan({body, hairLength, eyeColor, height }))     rate*=0.8   // -20%
-    return rate
+    return rate>1?1:rate
 }
 
 const bodyShapeRate = (bodyShape) => {
