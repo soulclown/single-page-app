@@ -1,7 +1,7 @@
 import style from './main.css'
 import * as constants from './utils/constants.js'
 import {Title} from './components/Title.js'
-
+import {Results} from "./components/Results.js";
 
 var app = {
     appName : 'Welcome to Camel Calculator',
@@ -29,3 +29,4 @@ var app = {
 var appContainer = document.getElementById("app-container")
 
 appContainer.appendChild(Title(app.appName))
+appContainer.appendChild(Results(app.getState()))
