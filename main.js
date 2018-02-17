@@ -17,8 +17,8 @@ var app = {
         age:22,
         height: 176,
         hairColor: constants.hairColors.BLOND,
-        hairLength: constants.hairLengths.MIDDLE,
-        eyeColor:constants.eyeColors.BLUE,
+        hairLength: constants.hairLengths.SHORT,
+        eyeColor:constants.eyeColors.BROWN,
         beard: constants.beardStyles.NONE,
         body: constants.bodyShapes.NORMAL
     }),
@@ -68,10 +68,12 @@ const handleSelectHairColor = function (e) {
 const handleSelectHairLength = function (length) {
     app.setHairLength(length)
     update(configs.ids().results,Results(app.getState()))
+    update(configs.ids().character,Character(app.getState()))
 }
 const handleSelectEyeColor = function (color) {
     app.setEyeColor(color)
     update(configs.ids().results,Results(app.getState()))
+    update(configs.ids().character,Character(app.getState()))
 }
 const handleSelectBeard = function (style) {
     app.setBeard(style)
@@ -107,6 +109,4 @@ render(appContainer, configs.ids().radioBody,
 )
 
 
-render(appContainer, configs.ids().character,
-    Character( app.getState())
-)
+render(appContainer, configs.ids().character, Character( app.getState()))

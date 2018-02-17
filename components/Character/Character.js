@@ -1,5 +1,5 @@
 import styles from './Character.css'
-import {bodyShapes, beardStyles} from '../../utils/constants.js'
+import {bodyShapes, beardStyles, eyeColors, hairLengths} from '../../utils/constants.js'
 
 export const Character = (props) => {
     var container = document.createElement("div");
@@ -26,6 +26,28 @@ export const Character = (props) => {
             break;
         case beardStyles.LARGE:
             container.appendChild(Image('public/images/BEARD_LARGE.png'))
+            break;
+    }
+    switch(props.eyeColor) {
+        case eyeColors.BLUE:
+            container.appendChild(Image('public/images/EYE_BLUE.png'))
+            break;
+        case eyeColors.GREEN:
+            container.appendChild(Image('public/images/EYE_GREEN.png'))
+            break;
+        case eyeColors.GREY:
+            container.appendChild(Image('public/images/EYE_GREY.png'))
+            break;
+    }
+    switch(props.hairLength) {
+        case hairLengths.SHORT:
+            container.appendChild(Image('public/images/HAIR_SHORT.png'))
+            break;
+        case hairLengths.MIDDLE:
+            container.appendChild(Image('public/images/HAIR_MIDDLE.png'))
+            break;
+        case hairLengths.LONG:
+            container.appendChild(Image('public/images/HAIR_LONG.png'))
             break;
     }
     return container;
