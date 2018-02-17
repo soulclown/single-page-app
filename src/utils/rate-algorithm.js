@@ -1,4 +1,4 @@
-import * as constants from './constants.js'
+import * as constants from '../configs/constants.js'
 
 export const rateCalculator = ({age, height, body, beard, eyeColor, hairLength }) => {
     let ratesArray = [

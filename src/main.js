@@ -1,27 +1,19 @@
-import style from './main.css'
-import * as constants from './src/utils/constants.js'
-import {Title} from './src/components/Title.js'
-import {Results} from "./src/components/Results.js";
-import {render, update} from './src/utils/helpers.js'
-import {configs} from './src/utils/configs.js'
+import style from '../public/css/main.css'
+import * as constants from './configs/constants.js'
+import {Title} from './components/Title.js'
+import {Results} from "./components/Results.js";
+import {render, update} from './utils/helpers.js'
+import {configs, initialState} from './configs/configs.js'
 
-import {Button} from "./src/components/Button.js"
-import {Slider} from './src/components/Slider/Slider.js'
-import {Select} from './src/components/Select/Select.js'
-import {Radio} from './src/components/Radio/Radio.js'
-import {Character} from './src/components/Character/Character.js'
+import {Button} from "./components/Button.js"
+import {Slider} from './components/Slider/Slider.js'
+import {Select} from './components/Select/Select.js'
+import {Radio} from './components/Radio/Radio.js'
+import {Character} from './components/Character/Character.js'
 
 var app = {
     appName : 'Welcome to Camel Calculator',
-    state : new Object({
-        age:82,
-        height: 165,
-        hairColor: constants.hairColors.BLOND,
-        hairLength: constants.hairLengths.SHORT,
-        eyeColor:constants.eyeColors.BROWN,
-        beard: constants.beardStyles.NONE,
-        body: constants.bodyShapes.NORMAL
-    }),
+    state : initialState,
     getState: function () {
         return this.state
     },

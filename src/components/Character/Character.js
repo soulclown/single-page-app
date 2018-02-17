@@ -1,5 +1,5 @@
 import styles from './Character.css'
-import {bodyShapes, beardStyles, eyeColors, hairLengths} from '../../utils/constants.js'
+import {bodyShapes, beardStyles, eyeColors, hairLengths} from '../../configs/constants.js'
 
 export const Character = (props) => {
     var container = document.createElement("div");

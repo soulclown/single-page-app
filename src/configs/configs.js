@@ -1,3 +1,4 @@
+import * as constants from './constants.js'
 export const configs = {
     ids: function () {
         return {
@@ -14,3 +15,12 @@ export const configs = {
         }
     }
 }
+export const initialState = new Object({
+    age:82,
+    height: 165,
+    hairColor: constants.hairColors.BLOND,
+    hairLength: constants.hairLengths.SHORT,
+    eyeColor:constants.eyeColors.BROWN,
+    beard: constants.beardStyles.NONE,
+    body: constants.bodyShapes.NORMAL
+})
