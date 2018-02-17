@@ -14,8 +14,8 @@ import {Character} from './components/Character/Character.js'
 var app = {
     appName : 'Welcome to Camel Calculator',
     state : new Object({
-        age:22,
-        height: 176,
+        age:82,
+        height: 165,
         hairColor: constants.hairColors.BLOND,
         hairLength: constants.hairLengths.SHORT,
         eyeColor:constants.eyeColors.BROWN,

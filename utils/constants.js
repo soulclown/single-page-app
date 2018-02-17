@@ -30,5 +30,5 @@ export const bodyShapes = {
     CHUBBY: "CHUBBY"
 }
 
-export const ageRange = [14, 70]
-export const heightRange = [140, 220]
+export const ageRange = [20, 90]
+export const heightRange = [140, 190]
