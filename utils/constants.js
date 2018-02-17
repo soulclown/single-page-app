@@ -17,14 +17,14 @@ export const eyeColors = {
     BROWN:  "BROWN",
     GREY:   "GREY"
 }
-export const beardStyle = {
+export const beardStyles = {
     NONE:   "NONE",
     SMALL:  "SMALL",
     MIDDLE: "MIDDLE",
     LARGE:  "LARGE"
 }
 
-export const bodyShape = {
+export const bodyShapes = {
     MUSCLE: "MUSCLE",
     NORMAL: "NORMAL",
     CHUBBY: "CHUBBY"

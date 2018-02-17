@@ -14,11 +14,11 @@ var app = {
     state : new Object({
         age:22,
         height: 176,
-        eyeColor:constants.eyeColors.BLUE,
         hairColor: constants.hairColors.BLOND,
         hairLength: constants.hairLengths.MIDDLE,
-        beard: constants.beardStyle.NONE,
-        body: constants.bodyShape.NORMAL
+        eyeColor:constants.eyeColors.BLUE,
+        beard: constants.beardStyles.NONE,
+        body: constants.bodyShapes.NORMAL
     }),
     getState: function () {
         return this.state
@@ -29,8 +29,20 @@ var app = {
     setHeight: function (cm) {
         this.state.height = cm
     },
-    setEyeColor: function (eyeColor) {
-        this.state.eyeColor = eyeColor
+    setHairColor: function (color) {
+        this.state.hairColor = color
+    },
+    setHairLength: function (length) {
+        this.state.hairLength = length
+    },
+    setEyeColor: function (color) {
+        this.state.eyeColor = color
+    },
+    setBeard: function (beardStyle) {
+        this.state.beard = beardStyle
+    },
+    setBody: function (bodyShape) {
+        this.state.body = bodyShape
     }
 }
 
@@ -48,7 +60,7 @@ const handleSlideHeight = function (e) {
     update(configs.ids().results,Results(app.getState()))
 }
 const handleSelectHairColor = function (e) {
-    app.setEyeColor(e.target.value)
+    app.setHairColor(e.target.value)
     update(configs.ids().results,Results(app.getState()))
 }
 
@@ -58,6 +70,6 @@ render(appContainer, configs.ids().sliderAge,
 render(appContainer, configs.ids().sliderHeight,
     Slider( constants.heightRange, app.getState().height,  handleSlideHeight )
 )
-render(appContainer, configs.ids().sliderHeight,
-    Select( Object.keys(constants.eyeColors), app.getState().eyeColor, handleSelectHairColor )
+render(appContainer, configs.ids().selectHairColor,
+    Select( Object.keys(constants.hairColors), app.getState().hairColor, handleSelectHairColor )
 )
