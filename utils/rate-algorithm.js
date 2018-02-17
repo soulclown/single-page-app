@@ -1,11 +1,12 @@
 import * as constants from './constants.js'
 
-export const rateCalculator = ({body, beard, eyeColor, hairLength, age}) => {
-    return ageRate(age)
-        * bodyShapeRate(body)
-        * beardStyleRate(beard)
-        * eyeColorsRate(eyeColor)
-        * hairLengthRate(hairLength)
+export const rateCalculator = ({age, height, body, beard, eyeColor, hairLength }) => {
+    return (ageRate(age)
+        + heightRate(height)
+        + bodyShapeRate(body)
+        + beardStyleRate(beard)
+        + eyeColorsRate(eyeColor)
+        + hairLengthRate(hairLength)) / 6
 }
 
 const bodyShapeRate = (bodyShape) => {
@@ -42,4 +43,8 @@ const hairLengthRate = (length) => {
 const ageRate = (age)=> {
     // Older is, more vote will get.
     return age / constants.ageRange[1]
+}
+const heightRate = (height)=> {
+    // Shorter is, more vote will get.
+    return 1 - (height / constants.heightRange[1])
 }
