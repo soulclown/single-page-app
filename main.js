@@ -6,6 +6,7 @@ import {render, update} from './utils/helpers.js'
 import {configs} from './utils/configs.js'
 
 import {Button} from "./components/Button.js"
+import {Slider} from './components/Slider/Slider.js'
 
 var app = {
     appName : 'Welcome to Camel Calculator',
@@ -28,18 +29,14 @@ var app = {
         this.state.height = cm
     }
 }
+
 var appContainer = document.getElementById("app-container")
 
 render(appContainer, configs.ids().title, Title(app.appName))
 render(appContainer, configs.ids().results, Results(app.getState()))
 
-
-/* Test DOM update on user interaction */
-const handleOnClick = function () {
-    app.setAge(Math.floor(Math.random() * 10))
-    update(
-        configs.ids().results,
-        Results(app.getState())
-    )
+const handleSlideAge = function (e) {
+    app.setAge(e.target.value)
+    update(configs.ids().results,Results(app.getState()))
 }
-appContainer.appendChild(Button("Random Age", handleOnClick))
+render(appContainer, configs.ids().sliderAge, Slider(constants.ageRange, handleSlideAge))
