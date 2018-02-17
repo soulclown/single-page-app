@@ -1,7 +1,7 @@
 import * as constants from './constants.js'
 
 export const rateCalculator = (props) => {
-    return bodyShapeRate(props.body) * beardStyleRate(props.beard)
+    return bodyShapeRate(props.body) * beardStyleRate(props.beard) * eyeColorsRate(props.eyeColor)
 }
 
 const bodyShapeRate = (bodyShape) => {
@@ -24,5 +24,17 @@ const beardStyleRate = (beard) => {
             return 0.5
         case constants.beardStyles.LARGE:
             return 0.7
+    }
+}
+const eyeColorsRate = (color) => {
+    switch (color) {
+        case constants.eyeColors.GREY:
+            return 0.6
+        case constants.eyeColors.BROWN:
+            return 0.8
+        case constants.eyeColors.GREEN:
+            return 0.7
+        case constants.eyeColors.BLUE:
+            return 1
     }
 }
