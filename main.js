@@ -8,6 +8,7 @@ import {configs} from './utils/configs.js'
 import {Button} from "./components/Button.js"
 import {Slider} from './components/Slider/Slider.js'
 import {Select} from './components/Select/Select.js'
+import {Radio} from './components/Radio/Radio.js'
 
 var app = {
     appName : 'Welcome to Camel Calculator',
@@ -63,6 +64,10 @@ const handleSelectHairColor = function (e) {
     app.setHairColor(e.target.value)
     update(configs.ids().results,Results(app.getState()))
 }
+const handleSelectHairLength = function (length) {
+    app.setHairLength(length)
+    update(configs.ids().results,Results(app.getState()))
+}
 
 render(appContainer, configs.ids().sliderAge,
     Slider( constants.ageRange, app.getState().age, handleSlideAge )
@@ -72,4 +77,7 @@ render(appContainer, configs.ids().sliderHeight,
 )
 render(appContainer, configs.ids().selectHairColor,
     Select( Object.keys(constants.hairColors), app.getState().hairColor, handleSelectHairColor )
+)
+render(appContainer, configs.ids().radioHairLength,
+    Radio( "group_name", Object.keys(constants.hairLengths), app.getState().hairLength, handleSelectHairLength )
 )
