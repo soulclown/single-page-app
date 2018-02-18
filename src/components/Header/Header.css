@@ -1,6 +1,6 @@
 .header {
     height:62px;
-    background-color: #747474;
+    background-color: #e8972c;
     position: relative;
 }
 
@@ -12,7 +12,7 @@
 }
 
 .app-title:before {
-    background: #262626;
+    background: #b67d33;
     color: white;
     content: 'How many votes will Berlusconi get?';
     overflow: hidden;
