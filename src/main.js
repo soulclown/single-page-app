@@ -1,7 +1,7 @@
 import style from '../public/css/main.css'
 import * as constants from './configs/constants.js'
 import {Title} from './components/Title.js'
-import {Results} from "./components/Results.js";
+import {Results} from "./components/Results/Results.js";
 import {render, update} from './utils/helpers.js'
 import {configs, initialState} from './configs/configs.js'
 
@@ -30,8 +30,8 @@ var app = {
         CountUpTimer.animate(rateCalculator(this.getState()))
     },
     showResults: function() {
-        update(configs.ids().content,CountUpTimer(0))
-        CountUpTimer.animate(rateCalculator(this.getState()))
+        update(configs.ids().content,Results(app.getState()))
+        Results.animate(this.getState())
     }
 }
 
@@ -75,5 +75,5 @@ content.appendChild(colForm)
 render(appContainer, configs.ids().content, content)
 formRows.forEach(row=>render(colForm, row.id, FormRow(row.title, row.controller, row.showValue)))
 render(colForm, "SUBMIT BUTTON", Button("Submit", ()=>{app.showResults()}))
-render(colPreview, configs.ids().character, Character( app.getState()))
+//render(colPreview, configs.ids().character, Character( app.getState()))
 //render(appContainer, configs.ids().results, Results(app.getState()))
