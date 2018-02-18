@@ -10,9 +10,16 @@ const Results = (state) => {
     characterBox.appendChild(Character( state) )
     container.appendChild(characterBox)
     container.setAttribute('class', 'results')
-    container.appendChild(document.createTextNode("Dressed like this he will get the"))
+    var prefix = document.createElement('span')
+    prefix.setAttribute('id', 'L_results_prefix')
+    prefix.appendChild(document.createTextNode("Dressed like this he will get the"))
+    var suffix = document.createElement('span')
+    suffix.setAttribute('id', 'L_results_suffix')
+    suffix.appendChild(document.createTextNode("of votes."))
+
+    container.appendChild(prefix)
     container.appendChild(CountUpTimer(rateCalculator(state)))
-    container.appendChild(document.createTextNode("of votes."))
+    container.appendChild(suffix)
     return container
 }
 Results.animate = (state) => {
