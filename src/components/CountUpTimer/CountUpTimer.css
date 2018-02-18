@@ -1,0 +1,13 @@
+div.count-up-timer {
+    width: 80px;
+    height: 80px;
+    border: 5px solid black;
+    border-radius: 80px;
+    background: white;
+    text-align: center;
+}
+div#count-up-timer-textnode {
+    font-size: 30pt;
+    font-weight: bold;
+    padding: 10px 0;
+}

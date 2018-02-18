@@ -13,7 +13,9 @@ export const rateCalculator = ({age, height, body, beard, eyeColor, hairLength }
     if (boosterPavarotti({body, beard, eyeColor, hairLength }))     rate*=1.1   // +10%
     if (boosterSympathy({body, beard, hairLength }))                rate*=1.2   // +20%
     if (boosterMachoMan({body, hairLength, eyeColor, height }))     rate*=0.8   // -20%
-    return rate>1?1:rate
+    // make rate in percentage
+    rate = (rate*100).toFixed(0)
+    return rate>100?100:rate
 }
 
 const bodyShapeRate = (bodyShape) => {

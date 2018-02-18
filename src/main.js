@@ -12,6 +12,8 @@ import {Radio} from './components/Radio/Radio.js'
 import {Character} from './components/Character/Character.js'
 import {FormRow} from './components/FormRow/FormRow.js'
 import {Header} from './components/Header/Header.js'
+import {CountUpTimer} from './components/CountUpTimer/CountUpTimer.js'
+import {rateCalculator} from './utils/rate-algorithm'
 
 var app = {
     appName : 'How many votes will Berlusconi get?',
@@ -25,7 +27,13 @@ var app = {
         update(configs.ids().character,Character(this.state))
         document.getElementById(configs.ids().sliderAge).querySelector("#value").innerText = this.state.age
         document.getElementById(configs.ids().sliderHeight).querySelector("#value").innerText = this.state.height
+        CountUpTimer.animate(rateCalculator(this.getState()))
     },
+    showResults: function() {
+        var countUpTimer = document.getElementById("TEST")
+        if (!countUpTimer)  render(appContainer, "TEST", CountUpTimer(0))
+        CountUpTimer.animate(rateCalculator(this.getState()))
+    }
 }
 
 var appContainer = document.getElementById("app-container")
@@ -67,6 +75,6 @@ content.appendChild(colForm)
 
 render(appContainer, "__CONTENT", content)
 formRows.forEach(row=>render(colForm, row.id, FormRow(row.title, row.controller, row.showValue)))
-
+render(colForm, "SUBMIT BUTTON", Button("Submit", ()=>{app.showResults()}))
 render(colPreview, configs.ids().character, Character( app.getState()))
 render(appContainer, configs.ids().results, Results(app.getState()))
