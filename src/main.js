@@ -10,6 +10,7 @@ import {Slider} from './components/Slider/Slider.js'
 import {Select} from './components/Select/Select.js'
 import {Radio} from './components/Radio/Radio.js'
 import {Character} from './components/Character/Character.js'
+import {FormRow} from './components/FormRow/FormRow.js'
 
 var app = {
     appName : 'Welcome to Camel Calculator',
@@ -78,26 +79,34 @@ const handleSelectBody = function (shape) {
     update(configs.ids().character,Character(app.getState()))
 }
 
+const AgeSlider     = Slider( constants.ageRange, app.getState().age, handleSlideAge )
+const HeightSlider  = Slider( constants.heightRange, app.getState().height,  handleSlideHeight )
+const HairColorSel  = Select( Object.keys(constants.hairColors), app.getState().hairColor, handleSelectHairColor )
+const HairRadio     = Radio( Object.keys(constants.hairLengths), app.getState().hairLength, handleSelectHairLength )
+const EyeColorRadio = Radio( Object.keys(constants.eyeColors), app.getState().eyeColor, handleSelectEyeColor )
+const BeardRadio    = Radio( Object.keys(constants.beardStyles), app.getState().beard, handleSelectBeard )
+const BodyRadio     = Radio( Object.keys(constants.bodyShapes), app.getState().body, handleSelectBody )
+
 render(appContainer, configs.ids().sliderAge,
-    Slider( constants.ageRange, app.getState().age, handleSlideAge )
+    FormRow( "Age", AgeSlider )
 )
 render(appContainer, configs.ids().sliderHeight,
-    Slider( constants.heightRange, app.getState().height,  handleSlideHeight )
+    FormRow( "Height (cm)", HeightSlider )
 )
 render(appContainer, configs.ids().selectHairColor,
-    Select( Object.keys(constants.hairColors), app.getState().hairColor, handleSelectHairColor )
+    FormRow( "Haircolor", HairColorSel )
 )
 render(appContainer, configs.ids().radioHairLength,
-    Radio( Object.keys(constants.hairLengths), app.getState().hairLength, handleSelectHairLength )
+    FormRow( "Hairlength", HairRadio )
 )
 render(appContainer, configs.ids().radioEyeColor,
-    Radio( Object.keys(constants.eyeColors), app.getState().eyeColor, handleSelectEyeColor )
+    FormRow( "Eyecolor", EyeColorRadio )
 )
 render(appContainer, configs.ids().radioBeard,
-    Radio( Object.keys(constants.beardStyles), app.getState().beard, handleSelectBeard )
+    FormRow( "Beard", BeardRadio )
 )
 render(appContainer, configs.ids().radioBody,
-    Radio( Object.keys(constants.bodyShapes), app.getState().body, handleSelectBody )
+    FormRow( "Body", BodyRadio )
 )
 
 
