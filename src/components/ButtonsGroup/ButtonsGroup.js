@@ -28,6 +28,9 @@ const ButtonGroupItem = (obj, selected, callback) => {
     var item = document.createElement('td')
     item.setAttribute('class', selected? 'button-group-item selected' : 'button-group-item')
     item.onclick=callback
-    item.appendChild(Image(obj.imgSrc))
+    if (obj.imgSrc)
+        item.appendChild(Image(obj.imgSrc))
+    else
+        item.appendChild(document.createTextNode(obj.value))
     return item
 }

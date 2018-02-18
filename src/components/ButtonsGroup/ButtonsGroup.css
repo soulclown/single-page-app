@@ -20,6 +20,7 @@
 .button-group-item > img {
     margin-top: 2px;
     transition: transform 0.3s;
+    max-width: 90px;
 }
 .button-group-item:hover >img {
     -webkit-box-flex: 1;
