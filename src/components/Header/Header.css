@@ -1,0 +1,32 @@
+.header {
+    height:62px;
+    background-color: #747474;
+}
+
+.app-title {
+    width:80%;
+    margin:auto;
+    position: relative;
+    color: #262626;
+    padding: 20px 50px;
+}
+
+.app-title:before {
+    background: #262626;
+    color: white;
+    content: 'How many votes will Berlusconi get?';
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px 50px;
+    -webkit-clip-path: polygon(0% 0% , 30% 0%, 30% 100%, 0% 100%);
+    clip-path: polygon(0% 0% , 30% 0%, 30% 100%, 0% 100%);
+    animation: slide 4s 1s linear infinite;
+}
+
+@keyframes slide {
+    50% {
+        -webkit-clip-path: polygon(70% 0%, 100% 0%, 100% 100%, 70% 100%);
+    }
+}

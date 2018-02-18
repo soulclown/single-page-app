@@ -1,5 +1,6 @@
 import styles from './Character.css'
 import {bodyShapes, beardStyles, eyeColors, hairLengths} from '../../configs/constants.js'
+import {Image} from '../Image.js'
 
 export const Character = (props) => {
     var container = document.createElement("div");
@@ -51,10 +52,4 @@ export const Character = (props) => {
             break;
     }
     return container;
-}
-
-const Image = (src) => {
-    var image = document.createElement("img");
-    image.setAttribute('src', src)
-    return image
 }

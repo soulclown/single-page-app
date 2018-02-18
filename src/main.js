@@ -11,9 +11,10 @@ import {Select} from './components/Select/Select.js'
 import {Radio} from './components/Radio/Radio.js'
 import {Character} from './components/Character/Character.js'
 import {FormRow} from './components/FormRow/FormRow.js'
+import {Header} from './components/Header/Header.js'
 
 var app = {
-    appName : 'Welcome to Camel Calculator',
+    appName : 'How many votes will Berlusconi get?',
     state : initialState,
     getState: function () {
         return this.state
@@ -29,7 +30,7 @@ var app = {
 
 var appContainer = document.getElementById("app-container")
 
-render(appContainer, configs.ids().title, Title(app.appName))
+render(appContainer, configs.ids().title, Header(app.appName))
 render(appContainer, configs.ids().results, Results(app.getState()))
 
 const AgeSlider     = Slider( constants.ageRange, app.getState().age, function (e) { app.setState({age:e}) } )
