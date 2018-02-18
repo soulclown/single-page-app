@@ -1,7 +1,9 @@
-export const Button = (label, callback) => {
+export const Button = (label, callback, labelId) => {
     var b = document.createElement("button")
-    b.innerText = label
-    b.value=label;
+    var labelSpan = document.createElement('span')
+    labelSpan.setAttribute('id',labelId)
+    labelSpan.innerText = label;
+    b.appendChild(labelSpan)
     b.onclick = callback
     return b
 }
