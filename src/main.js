@@ -12,7 +12,7 @@ import {Character} from './components/Character/Character.js'
 import {FormRow} from './components/FormRow/FormRow.js'
 import {Header} from './components/Header/Header.js'
 import {EN, IT, DE, applyLanguage, getDictionary} from './utils/multilanguage.js'
-import {MultilanguageSelector} from './components/MultilanguageSelector/MultilanguageSelector.js'
+import {ButtonsGroup} from "./components/ButtonsGroup/ButtonsGroup";
 
 const dictionary = getDictionary(EN)
 var app = {
@@ -52,7 +52,17 @@ const HairRadio     = Radio( Object.keys(constants.hairLengths), app.getState().
 const EyeColorRadio = Radio( Object.keys(constants.eyeColors), app.getState().eyeColor, function (color) { app.setState({eyeColor:color}) } )
 const BeardRadio    = Radio( Object.keys(constants.beardStyles), app.getState().beard, function (style) { app.setState({beard:style}) } )
 const BodyRadio     = Radio( Object.keys(constants.bodyShapes), app.getState().body, function (shape) { app.setState({body:shape}) } )
-
+const bodyItems = [
+    {imgSrc: "public/images/body-1.png", value: constants.bodyShapes.MUSCLE},
+    {imgSrc: "public/images/body-2.png", value: constants.bodyShapes.NORMAL},
+    {imgSrc: "public/images/body-3.png", value: constants.bodyShapes.CHUBBY}
+]
+const BodyController = ButtonsGroup(
+    '__BODY_BUTTONS_GROUP',
+    bodyItems,
+    app.getState().body,
+    function (shape) { app.setState({body:shape}) }
+)
 const formRows = [
     {
         id: configs.ids().sliderAge,
@@ -87,7 +97,7 @@ const formRows = [
     {
         id: configs.ids().radioBody,
         labelId: "L_form_body",
-        controller:BodyRadio
+        controller:BodyController
     },
 ]
 
