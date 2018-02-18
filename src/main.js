@@ -62,18 +62,8 @@ const formRows = [
 render(appContainer, configs.ids().title, Header(app.appName))
 
 var content = document.createElement('div')
-content.setAttribute('class', 'row')
-var colPreview = document.createElement('div')
-colPreview.setAttribute('class', 'col col-lg-30')
-var colForm = document.createElement('div')
-colForm.setAttribute('class', 'col col-lg-70 col-form')
-
-content.appendChild(colPreview)
-content.appendChild(colForm)
-
+content.setAttribute('class', 'app-content')
 
 render(appContainer, configs.ids().content, content)
-formRows.forEach(row=>render(colForm, row.id, FormRow(row.title, row.controller, row.showValue)))
-render(colForm, "SUBMIT BUTTON", Button("Submit", ()=>{app.showResults()}))
-//render(colPreview, configs.ids().character, Character( app.getState()))
-//render(appContainer, configs.ids().results, Results(app.getState()))
+formRows.forEach(row=>render(content, row.id, FormRow(row.title, row.controller, row.showValue)))
+render(content, "SUBMIT BUTTON", Button("Submit", ()=>{app.showResults()}))
