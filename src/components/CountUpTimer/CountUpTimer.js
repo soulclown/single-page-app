@@ -5,8 +5,6 @@ function animateValue(id, start, end, duration) {
     var increment = end > start? 1 : -1;
     var stepTime = Math.abs(Math.floor(duration / range));
     var obj = document.getElementById(id);
-    console.log(id)
-    console.log(obj)
     var timer = setInterval(function() {
         current += increment;
         obj.innerHTML = current;

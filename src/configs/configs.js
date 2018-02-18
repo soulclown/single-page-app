@@ -2,8 +2,9 @@ import * as constants from './constants.js'
 export const configs = {
     ids: function () {
         return {
-            title : "__TITLE",
+            header: "__HEADER",
             content: "__CONTENT",
+            title : "__TITLE",
             results : "__RESULTS",
             sliderAge: "__SLIDER_AGE",
             sliderHeight: "__SLIDER_HEIGHT",

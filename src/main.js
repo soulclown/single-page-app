@@ -1,6 +1,5 @@
 import style from '../public/css/main.css'
 import * as constants from './configs/constants.js'
-import {Title} from './components/Title.js'
 import {Results} from "./components/Results/Results.js";
 import {render, update} from './utils/helpers.js'
 import {configs, initialState} from './configs/configs.js'
@@ -12,11 +11,14 @@ import {Radio} from './components/Radio/Radio.js'
 import {Character} from './components/Character/Character.js'
 import {FormRow} from './components/FormRow/FormRow.js'
 import {Header} from './components/Header/Header.js'
-import {CountUpTimer} from './components/CountUpTimer/CountUpTimer.js'
-import {rateCalculator} from './utils/rate-algorithm'
+import {EN, IT, DE, applyLanguage, getDictionary} from './utils/multilanguage.js'
+import {MultilanguageSelector} from './components/MultilanguageSelector/MultilanguageSelector.js'
 
+const dictionary = getDictionary(EN)
 var app = {
-    appName : 'How many votes will Berlusconi get?',
+    appName : dictionary.L_appName,
+    language: EN,
+    getLanguage: function() {return this.language},
     state : initialState,
     getState: function () {
         return this.state
@@ -48,23 +50,53 @@ const BeardRadio    = Radio( Object.keys(constants.beardStyles), app.getState().
 const BodyRadio     = Radio( Object.keys(constants.bodyShapes), app.getState().body, function (shape) { app.setState({body:shape}) } )
 
 const formRows = [
-    {id: configs.ids().sliderAge,       title:"Age",            controller:AgeSlider,      showValue:app.getState().age},
-    {id: configs.ids().sliderHeight,    title:"Height (cm)",    controller:HeightSlider,   showValue:app.getState().height},
-    {id: configs.ids().selectHairColor, title:"Haircolor",      controller:HairColorSel},
-    {id: configs.ids().radioHairLength, title:"Hairlength",     controller:HairRadio},
-    {id: configs.ids().radioEyeColor,   title:"Eyecolor",       controller:EyeColorRadio},
-    {id: configs.ids().radioBeard,      title:"Beard",          controller:BeardRadio},
-    {id: configs.ids().radioBody,       title:"Body",           controller:BodyRadio},
+    {
+        id: configs.ids().sliderAge,
+        labelId: "L_form_age",
+        controller:AgeSlider,
+        showValue:app.getState().age},
+    {
+        id: configs.ids().sliderHeight,
+        labelId: "L_form_height",
+        controller:HeightSlider,
+        showValue:app.getState().height},
+    {
+        id: configs.ids().selectHairColor,
+        labelId: "L_form_haircolor",
+        controller:HairColorSel
+    },
+    {
+        id: configs.ids().radioHairLength,
+        labelId: "L_form_hairlength",
+        controller:HairRadio
+    },
+    {
+        id: configs.ids().radioEyeColor,
+        labelId: "L_form_eyeColor",
+        controller:EyeColorRadio
+    },
+    {
+        id: configs.ids().radioBeard,
+        labelId: "L_form_beard",
+        controller:BeardRadio
+    },
+    {
+        id: configs.ids().radioBody,
+        labelId: "L_form_body",
+        controller:BodyRadio
+    },
 ]
 
 
 
 
-render(appContainer, configs.ids().title, Header(app.appName))
+render(appContainer, configs.ids().header, Header(app.appName))
 
 var content = document.createElement('div')
 content.setAttribute('class', 'app-content')
 
 render(appContainer, configs.ids().content, content)
-formRows.forEach(row=>render(content, row.id, FormRow(row.title, row.controller, row.showValue)))
-render(content, "SUBMIT BUTTON", Button("Submit", ()=>{app.showResults()}))
+formRows.forEach(row=>render(content, row.id, FormRow(app.getLanguage(), row.labelId, row.controller, row.showValue)))
+render(content, "__SUBMIT", Button("Submit", ()=>{app.showResults()}, "L_form_submit"))
+
+applyLanguage(app.getLanguage())
