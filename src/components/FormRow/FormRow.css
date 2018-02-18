@@ -12,3 +12,8 @@
 .row .col:last-child {
     width:70%;
 }
+
+#value {
+    float:right;
+    margin-right: 10px;
+}

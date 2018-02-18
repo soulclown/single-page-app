@@ -22,6 +22,8 @@ var app = {
         this.state = Object.assign({}, this.state, newState)
         update(configs.ids().results,Results(this.state))
         update(configs.ids().character,Character(this.state))
+        document.getElementById(configs.ids().sliderAge).querySelector("#value").innerText = this.state.age
+        document.getElementById(configs.ids().sliderHeight).querySelector("#value").innerText = this.state.height
     },
 }
 
@@ -39,8 +41,8 @@ const BeardRadio    = Radio( Object.keys(constants.beardStyles), app.getState().
 const BodyRadio     = Radio( Object.keys(constants.bodyShapes), app.getState().body, function (shape) { app.setState({body:shape}) } )
 
 const formRows = [
-    {id: configs.ids().sliderAge,       title:"Age",            controller:AgeSlider},
-    {id: configs.ids().sliderHeight,    title:"Height (cm)",    controller:HeightSlider},
+    {id: configs.ids().sliderAge,       title:"Age",            controller:AgeSlider,      showValue:app.getState().age},
+    {id: configs.ids().sliderHeight,    title:"Height (cm)",    controller:HeightSlider,   showValue:app.getState().height},
     {id: configs.ids().selectHairColor, title:"Haircolor",      controller:HairColorSel},
     {id: configs.ids().radioHairLength, title:"Hairlength",     controller:HairRadio},
     {id: configs.ids().radioEyeColor,   title:"Eyecolor",       controller:EyeColorRadio},
@@ -48,6 +50,6 @@ const formRows = [
     {id: configs.ids().radioBody,       title:"Body",           controller:BodyRadio},
 ]
 
-formRows.forEach(row=>render(appContainer, row.id, FormRow(row.title, row.controller)))
+formRows.forEach(row=>render(appContainer, row.id, FormRow(row.title, row.controller, row.showValue)))
 
 render(appContainer, configs.ids().character, Character( app.getState()))
