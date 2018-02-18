@@ -1,13 +1,17 @@
-div.count-up-timer {
-    width: 80px;
-    height: 80px;
-    border: 5px solid black;
-    border-radius: 80px;
-    background: white;
+h2.count-up-timer {
     text-align: center;
 }
-div#count-up-timer-textnode {
-    font-size: 30pt;
-    font-weight: bold;
-    padding: 10px 0;
+#count-up-timer-textnode{
+    font-weight: 600;
+    font-size: 3em;
+    display: block;
+    position:relative;
+}
+#count-up-timer-textnode:after{
+    content: '%';
+    font-size: 0.3em;
+    position: absolute;
+    bottom: 50px;
+    margin-left: 20px;
+    font-weight: lighter;
 }

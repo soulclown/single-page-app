@@ -17,12 +17,14 @@ function animateValue(id, start, end, duration) {
 }
 
 const CountUpTimer = (n) => {
-    var container = document.createElement('div')
+    var container = document.createElement('h2')
     container.setAttribute('class', 'count-up-timer')
+    container.appendChild(document.createTextNode("Dressed like this he will get the"))
     var number = document.createElement('div')
     number.setAttribute('id', 'count-up-timer-textnode')
     number.appendChild(document.createTextNode(n))
     container.appendChild(number)
+    container.appendChild(document.createTextNode("of votes."))
     return container
 }
 CountUpTimer.animate = (n) => {

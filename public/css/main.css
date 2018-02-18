@@ -20,3 +20,9 @@ h1{
 .row .col.col-lg-70 {
     width:70%;
 }
+
+h2 {
+    font-size: 3.6rem;
+    line-height: 1.25;
+    letter-spacing: -.1rem;
+}

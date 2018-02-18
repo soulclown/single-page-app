@@ -30,8 +30,7 @@ var app = {
         CountUpTimer.animate(rateCalculator(this.getState()))
     },
     showResults: function() {
-        var countUpTimer = document.getElementById("TEST")
-        if (!countUpTimer)  render(appContainer, "TEST", CountUpTimer(0))
+        update(configs.ids().content,CountUpTimer(0))
         CountUpTimer.animate(rateCalculator(this.getState()))
     }
 }
@@ -73,8 +72,8 @@ content.appendChild(colPreview)
 content.appendChild(colForm)
 
 
-render(appContainer, "__CONTENT", content)
+render(appContainer, configs.ids().content, content)
 formRows.forEach(row=>render(colForm, row.id, FormRow(row.title, row.controller, row.showValue)))
 render(colForm, "SUBMIT BUTTON", Button("Submit", ()=>{app.showResults()}))
 render(colPreview, configs.ids().character, Character( app.getState()))
-render(appContainer, configs.ids().results, Results(app.getState()))
+//render(appContainer, configs.ids().results, Results(app.getState()))
