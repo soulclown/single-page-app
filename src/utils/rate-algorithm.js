@@ -57,8 +57,8 @@ const heightRate = (height)=> {
 }
 
 const boosterPavarotti = ({body, beard, eyeColor, hairLength }) => {
-    // Short Hair, long beard, brown eyes and he dress a smoking
-    return (hairLength==constants.hairLengths.SHORT
+    // Middle Hair, long beard, brown eyes and he dress a smoking
+    return (hairLength==constants.hairLengths.MIDDLE
         && beard==constants.beardStyles.LARGE
         && eyeColor==constants.eyeColors.BROWN
         && body == constants.bodyShapes.NORMAL
