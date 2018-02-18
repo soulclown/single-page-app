@@ -14,14 +14,27 @@ h1{
 .row .col {
     display: inline-grid;
 }
-.row .col.col-lg-30 {
-    width:30%;
-}
-.row .col.col-lg-70 {
-    width:70%;
-}
 
 #__CONTENT {
     max-width:800px;
     margin:auto;
+    padding: 40px;
+}
+
+
+@media screen and (max-width: 549px) {
+    .row .col.col-lg-30 {
+        width:100%;
+    }
+    .row .col.col-lg-70 {
+        width:100%;
+    }
+}
+@media screen and (min-width: 550px) {
+    .row .col.col-lg-30 {
+        width:30%;
+    }
+    .row .col.col-lg-70 {
+        width:70%;
+    }
 }

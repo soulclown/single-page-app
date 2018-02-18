@@ -23,11 +23,12 @@ var app = {
     },
     setState: function (newState) {
         this.state = Object.assign({}, this.state, newState)
-        update(configs.ids().results,Results(this.state))
-        update(configs.ids().character,Character(this.state))
         document.getElementById(configs.ids().sliderAge).querySelector("#value").innerText = this.state.age
         document.getElementById(configs.ids().sliderHeight).querySelector("#value").innerText = this.state.height
-        CountUpTimer.animate(rateCalculator(this.getState()))
+        if (document.getElementById(configs.ids().results))
+            update(configs.ids().results,Results(this.state))
+        if (document.getElementById(configs.ids().character))
+            update(configs.ids().character,Character(this.state))
     },
     showResults: function() {
         update(configs.ids().content,Results(app.getState()))
