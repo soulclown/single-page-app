@@ -1,9 +1,12 @@
 .character-container {
     background: white;
-    position:absolute;
+    position:relative;
 }
 .character-container > * {
     position: absolute;
     top:0;
     left:0;
+}
+.character-container > img {
+    width:80%;
 }

@@ -30,8 +30,6 @@ var app = {
 
 var appContainer = document.getElementById("app-container")
 
-render(appContainer, configs.ids().title, Header(app.appName))
-render(appContainer, configs.ids().results, Results(app.getState()))
 
 const AgeSlider     = Slider( constants.ageRange, app.getState().age, function (e) { app.setState({age:e}) } )
 const HeightSlider  = Slider( constants.heightRange, app.getState().height,  function (e) { app.setState({height:e})} )
@@ -51,6 +49,24 @@ const formRows = [
     {id: configs.ids().radioBody,       title:"Body",           controller:BodyRadio},
 ]
 
-formRows.forEach(row=>render(appContainer, row.id, FormRow(row.title, row.controller, row.showValue)))
 
-render(appContainer, configs.ids().character, Character( app.getState()))
+
+
+render(appContainer, configs.ids().title, Header(app.appName))
+
+var content = document.createElement('div')
+content.setAttribute('class', 'row')
+var colPreview = document.createElement('div')
+colPreview.setAttribute('class', 'col col-lg-30')
+var colForm = document.createElement('div')
+colForm.setAttribute('class', 'col col-lg-70 col-form')
+
+content.appendChild(colPreview)
+content.appendChild(colForm)
+
+
+render(appContainer, "__CONTENT", content)
+formRows.forEach(row=>render(colForm, row.id, FormRow(row.title, row.controller, row.showValue)))
+
+render(colPreview, configs.ids().character, Character( app.getState()))
+render(appContainer, configs.ids().results, Results(app.getState()))
