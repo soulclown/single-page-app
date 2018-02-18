@@ -2,6 +2,7 @@ import {styles} from './Results.css'
 import {rateCalculator} from '../../utils/rate-algorithm'
 import {CountUpTimer} from "../CountUpTimer/CountUpTimer";
 import {Character} from '../Character/Character.js'
+import {Label} from '../Label.js'
 
 const Results = (state) => {
     var container = document.createElement('div')
@@ -10,16 +11,9 @@ const Results = (state) => {
     characterBox.appendChild(Character( state) )
     container.appendChild(characterBox)
     container.setAttribute('class', 'results')
-    var prefix = document.createElement('span')
-    prefix.setAttribute('id', 'L_results_prefix')
-    prefix.appendChild(document.createTextNode("Dressed like this he will get the"))
-    var suffix = document.createElement('span')
-    suffix.setAttribute('id', 'L_results_suffix')
-    suffix.appendChild(document.createTextNode("of votes."))
-
-    container.appendChild(prefix)
+    container.appendChild(Label('L_results_prefix',"Dressed like this he will get the" ))
     container.appendChild(CountUpTimer(rateCalculator(state)))
-    container.appendChild(suffix)
+    container.appendChild(Label('L_results_suffix',"of votes" ))
     return container
 }
 Results.animate = (state) => {
