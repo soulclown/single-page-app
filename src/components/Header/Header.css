@@ -1,6 +1,7 @@
 .header {
     height:62px;
     background-color: #747474;
+    position: relative;
 }
 
 .app-title {
@@ -28,4 +29,10 @@
     50% {
         -webkit-clip-path: polygon(70% 0%, 100% 0%, 100% 100%, 70% 100%);
     }
+}
+.ml {
+    float: right;
+    position: absolute;
+    top: 12px;
+    right: 10px;
 }
