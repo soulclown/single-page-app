@@ -52,11 +52,24 @@ const HairRadio     = Radio( Object.keys(constants.hairLengths), app.getState().
 const EyeColorRadio = Radio( Object.keys(constants.eyeColors), app.getState().eyeColor, function (color) { app.setState({eyeColor:color}) } )
 const BeardRadio    = Radio( Object.keys(constants.beardStyles), app.getState().beard, function (style) { app.setState({beard:style}) } )
 const BodyRadio     = Radio( Object.keys(constants.bodyShapes), app.getState().body, function (shape) { app.setState({body:shape}) } )
+
+const beardItems = [
+    {imgSrc: "public/images/beard-none.png", value: constants.beardStyles.NONE},
+    {imgSrc: "public/images/beard-small.png", value: constants.beardStyles.SMALL},
+    {imgSrc: "public/images/beard-middle.png", value: constants.beardStyles.MIDDLE},
+    {imgSrc: "public/images/beard-full.png", value: constants.beardStyles.LARGE},
+]
 const bodyItems = [
     {imgSrc: "public/images/body-1.png", value: constants.bodyShapes.MUSCLE},
     {imgSrc: "public/images/body-2.png", value: constants.bodyShapes.NORMAL},
     {imgSrc: "public/images/body-3.png", value: constants.bodyShapes.CHUBBY}
 ]
+const beardController = ButtonsGroup(
+    '__BEARD_BUTTONS_GROUP',
+    beardItems,
+    app.getState().beard,
+    function (style) { app.setState({beard:style}) }
+)
 const BodyController = ButtonsGroup(
     '__BODY_BUTTONS_GROUP',
     bodyItems,
@@ -92,7 +105,7 @@ const formRows = [
     {
         id: configs.ids().radioBeard,
         labelId: "L_form_beard",
-        controller:BeardRadio
+        controller:beardController
     },
     {
         id: configs.ids().radioBody,
