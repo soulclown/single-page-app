@@ -1,0 +1,18 @@
+
+.flag-container {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 30px;
+    border: 2px solid black;
+    opacity: 0.5;
+    display: inline-block;
+    float: right;
+    margin-right: 10px;
+}
+.flag-container:hover{
+    opacity: 1;
+}
+.flag-container img {
+    width:100%;
+}
