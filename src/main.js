@@ -19,6 +19,10 @@ var app = {
     appName : dictionary.L_appName,
     language: EN,
     getLanguage: function() {return this.language},
+    setLanguage: function(lang) {
+        this.language=lang
+        applyLanguage(lang)
+    },
     state : initialState,
     getState: function () {
         return this.state
@@ -33,7 +37,7 @@ var app = {
             update(configs.ids().character,Character(this.state))
     },
     showResults: function() {
-        update(configs.ids().content,Results(app.getState()))
+        update(configs.ids().content,Results(app.getState(), this.getLanguage()))
         Results.animate(this.getState())
     }
 }
@@ -89,8 +93,10 @@ const formRows = [
 
 
 
-
-render(appContainer, configs.ids().header, Header(app.appName))
+const handleChangeLanguage = (lang)=> {
+    app.setLanguage(lang)
+}
+render(appContainer, configs.ids().header, Header(app.appName, handleChangeLanguage))
 
 var content = document.createElement('div')
 content.setAttribute('class', 'app-content')

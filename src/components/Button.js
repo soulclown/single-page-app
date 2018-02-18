@@ -1,9 +1,7 @@
+import {Label} from './Label.js'
 export const Button = (label, callback, labelId) => {
     var b = document.createElement("button")
-    var labelSpan = document.createElement('span')
-    labelSpan.setAttribute('id',labelId)
-    labelSpan.innerText = label;
-    b.appendChild(labelSpan)
+    b.appendChild(Label(labelId, label))
     b.onclick = callback
     return b
 }

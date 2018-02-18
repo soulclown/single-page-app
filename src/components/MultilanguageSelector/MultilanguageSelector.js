@@ -2,19 +2,19 @@ import {styles} from './MultilanguageSelector.css'
 import {Image} from '../Image.js'
 import {IT, DE, EN, applyLanguage} from "../../utils/multilanguage";
 
-export const MultilanguageSelector = () => {
+export const MultilanguageSelector = (handleChangeLanguage) => {
     var container = document.createElement("div");
 
-    container.appendChild(Flag(EN))
-    container.appendChild(Flag(IT))
-    container.appendChild(Flag(DE))
+    container.appendChild(Flag(EN,handleChangeLanguage))
+    container.appendChild(Flag(IT, handleChangeLanguage))
+    container.appendChild(Flag(DE, handleChangeLanguage))
     return container;
 }
 
-const Flag = (lang) => {
+const Flag = (lang, handleChangeLanguage) => {
     var flagContainer = document.createElement('div')
     flagContainer.setAttribute('class', 'flag-container')
-    flagContainer.onclick = ()=> applyLanguage(lang);
+    flagContainer.onclick = ()=> handleChangeLanguage(lang);
     switch (lang) {
         case EN:
             flagContainer.appendChild(Image('public/images/flag_EN.png'))

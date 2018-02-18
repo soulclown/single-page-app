@@ -1,6 +1,6 @@
 import {styles} from './Header.css'
 import {MultilanguageSelector} from '../MultilanguageSelector/MultilanguageSelector.js'
-export const Header = (appName) => {
+export const Header = (appName, handleChangeLanguage) => {
     var header = document.createElement("div");
     header.setAttribute('class', 'header')
 
@@ -8,7 +8,7 @@ export const Header = (appName) => {
     title.setAttribute('class', 'app-title')
     title.appendChild(document.createTextNode(appName))
 
-    let multilanguage = MultilanguageSelector();
+    let multilanguage = MultilanguageSelector(handleChangeLanguage);
     multilanguage.setAttribute('class', 'ml')
     header.appendChild(title)
     header.appendChild(multilanguage)

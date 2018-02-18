@@ -1,15 +1,13 @@
 import {styles} from './FormRow.css'
 import {getDictionary} from "../../utils/multilanguage";
+import {Label} from '../Label.js'
 export const FormRow = (lang, labelId, element, showValue) => {
     let labels = getDictionary(lang)
     // First column: Title
     var col_1= document.createElement("div")
     col_1.setAttribute('class', 'col col-lg-30')
     var col_1_content = document.createElement('h3')
-    var label = document.createElement('span')
-    label.setAttribute('id', labelId)
-    label.appendChild(document.createTextNode(labels[labelId]))
-    col_1_content.appendChild(label)
+    col_1_content.appendChild(Label(labelId, labels[labelId]))
     col_1.appendChild(col_1_content)
     if (showValue!=undefined) {
         let value = document.createElement('div')
