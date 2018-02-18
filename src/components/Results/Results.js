@@ -4,6 +4,7 @@ import {CountUpTimer} from "../CountUpTimer/CountUpTimer";
 import {Character} from '../Character/Character.js'
 import {Label} from '../Label.js'
 import {getDictionary} from "../../utils/multilanguage";
+import {Button} from '../Button.js'
 
 const Results = (state, lang) => {
     var labels = getDictionary(lang)
@@ -17,6 +18,7 @@ const Results = (state, lang) => {
     container.appendChild(Label('L_results_prefix',labels['L_results_prefix']))
     container.appendChild(CountUpTimer(rateCalculator(state)))
     container.appendChild(Label('L_results_suffix',labels['L_results_suffix'] ))
+    container.appendChild(Button(labels['L_results_tryagain'], ()=>{location.reload()}, "L_results_tryagain"))
     return container
 }
 Results.animate = (state) => {
