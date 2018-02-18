@@ -18,27 +18,11 @@ var app = {
     getState: function () {
         return this.state
     },
-    setAge: function (age) {
-        this.state.age = age
+    setState: function (newState) {
+        this.state = Object.assign({}, this.state, newState)
+        update(configs.ids().results,Results(this.state))
+        update(configs.ids().character,Character(this.state))
     },
-    setHeight: function (cm) {
-        this.state.height = cm
-    },
-    setHairColor: function (color) {
-        this.state.hairColor = color
-    },
-    setHairLength: function (length) {
-        this.state.hairLength = length
-    },
-    setEyeColor: function (color) {
-        this.state.eyeColor = color
-    },
-    setBeard: function (beardStyle) {
-        this.state.beard = beardStyle
-    },
-    setBody: function (bodyShape) {
-        this.state.body = bodyShape
-    }
 }
 
 var appContainer = document.getElementById("app-container")
@@ -46,68 +30,24 @@ var appContainer = document.getElementById("app-container")
 render(appContainer, configs.ids().title, Title(app.appName))
 render(appContainer, configs.ids().results, Results(app.getState()))
 
-const handleSlideAge = function (e) {
-    app.setAge(e.target.value)
-    update(configs.ids().results,Results(app.getState()))
-}
-const handleSlideHeight = function (e) {
-    app.setHeight(e.target.value)
-    update(configs.ids().results,Results(app.getState()))
-}
-const handleSelectHairColor = function (e) {
-    app.setHairColor(e.target.value)
-    update(configs.ids().results,Results(app.getState()))
-}
-const handleSelectHairLength = function (length) {
-    app.setHairLength(length)
-    update(configs.ids().results,Results(app.getState()))
-    update(configs.ids().character,Character(app.getState()))
-}
-const handleSelectEyeColor = function (color) {
-    app.setEyeColor(color)
-    update(configs.ids().results,Results(app.getState()))
-    update(configs.ids().character,Character(app.getState()))
-}
-const handleSelectBeard = function (style) {
-    app.setBeard(style)
-    update(configs.ids().results,Results(app.getState()))
-    update(configs.ids().character,Character(app.getState()))
-}
-const handleSelectBody = function (shape) {
-    app.setBody(shape)
-    update(configs.ids().results,Results(app.getState()))
-    update(configs.ids().character,Character(app.getState()))
-}
+const AgeSlider     = Slider( constants.ageRange, app.getState().age, function (e) { app.setState({age:e}) } )
+const HeightSlider  = Slider( constants.heightRange, app.getState().height,  function (e) { app.setState({height:e})} )
+const HairColorSel  = Select( Object.keys(constants.hairColors), app.getState().hairColor, function (e) { app.setState({hairColor:e}) } )
+const HairRadio     = Radio( Object.keys(constants.hairLengths), app.getState().hairLength, function (length) { app.setState({hairLength:length}) } )
+const EyeColorRadio = Radio( Object.keys(constants.eyeColors), app.getState().eyeColor, function (color) { app.setState({eyeColor:color}) } )
+const BeardRadio    = Radio( Object.keys(constants.beardStyles), app.getState().beard, function (style) { app.setState({beard:style}) } )
+const BodyRadio     = Radio( Object.keys(constants.bodyShapes), app.getState().body, function (shape) { app.setState({body:shape}) } )
 
-const AgeSlider     = Slider( constants.ageRange, app.getState().age, handleSlideAge )
-const HeightSlider  = Slider( constants.heightRange, app.getState().height,  handleSlideHeight )
-const HairColorSel  = Select( Object.keys(constants.hairColors), app.getState().hairColor, handleSelectHairColor )
-const HairRadio     = Radio( Object.keys(constants.hairLengths), app.getState().hairLength, handleSelectHairLength )
-const EyeColorRadio = Radio( Object.keys(constants.eyeColors), app.getState().eyeColor, handleSelectEyeColor )
-const BeardRadio    = Radio( Object.keys(constants.beardStyles), app.getState().beard, handleSelectBeard )
-const BodyRadio     = Radio( Object.keys(constants.bodyShapes), app.getState().body, handleSelectBody )
+const formRows = [
+    {id: configs.ids().sliderAge,       title:"Age",            controller:AgeSlider},
+    {id: configs.ids().sliderHeight,    title:"Height (cm)",    controller:HeightSlider},
+    {id: configs.ids().selectHairColor, title:"Haircolor",      controller:HairColorSel},
+    {id: configs.ids().radioHairLength, title:"Hairlength",     controller:HairRadio},
+    {id: configs.ids().radioEyeColor,   title:"Eyecolor",       controller:EyeColorRadio},
+    {id: configs.ids().radioBeard,      title:"Beard",          controller:BeardRadio},
+    {id: configs.ids().radioBody,       title:"Body",           controller:BodyRadio},
+]
 
-render(appContainer, configs.ids().sliderAge,
-    FormRow( "Age", AgeSlider )
-)
-render(appContainer, configs.ids().sliderHeight,
-    FormRow( "Height (cm)", HeightSlider )
-)
-render(appContainer, configs.ids().selectHairColor,
-    FormRow( "Haircolor", HairColorSel )
-)
-render(appContainer, configs.ids().radioHairLength,
-    FormRow( "Hairlength", HairRadio )
-)
-render(appContainer, configs.ids().radioEyeColor,
-    FormRow( "Eyecolor", EyeColorRadio )
-)
-render(appContainer, configs.ids().radioBeard,
-    FormRow( "Beard", BeardRadio )
-)
-render(appContainer, configs.ids().radioBody,
-    FormRow( "Body", BodyRadio )
-)
-
+formRows.forEach(row=>render(appContainer, row.id, FormRow(row.title, row.controller)))
 
 render(appContainer, configs.ids().character, Character( app.getState()))

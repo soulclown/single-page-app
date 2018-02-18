@@ -7,6 +7,8 @@ export const Slider = (range, value, callback) => {
     node.setAttribute('max', range[1])
     node.setAttribute('value', value)
     node.setAttribute('class', 'slider')
-    node.oninput = callback
+    node.oninput = function (e) {
+        callback(e.target.value)
+    }
     return node;
 }

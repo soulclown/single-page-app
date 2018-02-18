@@ -11,6 +11,6 @@ export const Select = (options, optionSelected, callback) => {
         child.innerHTML = option
         node.appendChild(child)
     })
-    node.onchange = callback
+    node.onchange = (e)=>callback(e.target.value)
     return node;
 }
