@@ -15,8 +15,8 @@ Requirements:
 How to run in localhost: 
 * checkout the repository;
 * execute ```npm install``` in order to download all the libraries necessary
-* from your console type : ```webpack-dev-server```
+* from your console type : ```npm start```
 The app will be available at: ```http://localhost:8080```
 
 How to build:
-* execute the command ```webpack --config ./webpack.config.js```
+* execute the command ```npm run build```
